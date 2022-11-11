@@ -27,9 +27,6 @@ jobs:
             tox-env: py310
           - python-version: "3.11"
             tox-env: py311
-        exclude:
-          - os: windows-latest
-            python-version: "3.11"
     env:
       TOXENV: ${{ matrix.tox-env }}
     runs-on: ${{ matrix.os }}
