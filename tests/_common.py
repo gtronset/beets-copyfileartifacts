@@ -2,6 +2,7 @@ import os
 import shutil
 import sys
 import tempfile
+import threading
 import unittest
 
 import beets
@@ -86,8 +87,14 @@ class TestCase(unittest.TestCase, Assertions):
         self.io = DummyIO()
 
     def tearDown(self):
-        self.lib._close()
 
+        # self.lib._close()
+        lister = ",".join(threading.enumerate())
+        log.debug(lister)
+        for conn in self.lib._connections:
+
+            log.debug("YO " + str(conn))
+        self.lib.close()
         if os.path.isdir(self.temp_dir):
             shutil.rmtree(self.temp_dir)
         if self._old_home is None:
@@ -101,8 +108,6 @@ class TestCase(unittest.TestCase, Assertions):
 
 
 # Mock I/O.
-
-
 class InputException(Exception):
     def __init__(self, output=None):
         self.output = output
