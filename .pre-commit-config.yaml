@@ -1,7 +1,7 @@
 # yaml-language-server: $schema=https://json.schemastore.org/pre-commit-config.json
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.6.0
+    rev: v5.0.0
     hooks:
       - id: check-yaml
       - id: check-toml
@@ -17,12 +17,12 @@ repos:
         args: ["--maxkb=500"]
 
   - repo: https://github.com/psf/black
-    rev: 24.4.0
+    rev: 24.10.0
     hooks:
       - id: black
 
   - repo: https://github.com/PyCQA/flake8
-    rev: 7.0.0
+    rev: 7.1.1
     hooks:
       - id: flake8
         additional_dependencies:
@@ -35,7 +35,7 @@ repos:
       - id: isort
 
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.39.0
+    rev: v0.43.0
     hooks:
       - id: markdownlint
       - id: markdownlint
@@ -45,12 +45,12 @@ repos:
         stages: [manual]
 
   - repo: https://github.com/pre-commit/pre-commit
-    rev: v3.7.0
+    rev: v4.0.1
     hooks:
       - id: validate_manifest
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: "v1.9.0"
+    rev: "v1.14.1"
     hooks:
       - id: mypy
 
@@ -58,9 +58,9 @@ repos:
     rev: "1.8.0"
     hooks:
       - id: poetry-check
-        stages: [push]
+        stages: [pre-push]
       - id: poetry-lock
-        stages: [push]
+        stages: [pre-push]
       - id: poetry-export
         name: poetry-export
         stages: [manual]
@@ -100,12 +100,12 @@ repos:
         args: ["-e pylint"]
 
   - repo: https://github.com/crate-ci/typos
-    rev: "v1.20.8"
+    rev: "dictgen-v0.3.1"
     hooks:
       - id: typos
         exclude: "(_typos.toml|.gitignore)"
 
   - repo: https://github.com/abravalheri/validate-pyproject
-    rev: "v0.16"
+    rev: "v0.23"
     hooks:
       - id: validate-pyproject
